@@ -28,7 +28,9 @@ body {
     text-rendering: optimizeSpeed;
 }
 
-button, input, [tabindex] {
+button,
+input,
+[tabindex] {
     outline: none;
     border: none;
 }
