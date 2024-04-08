@@ -9,9 +9,9 @@ import 'tippy.js/dist/tippy.css'; // optional for tooltips
 import styles from './Header.module.scss';
 import images from '~/asset/images';
 import { useEffect, useState } from 'react';
+import Button from '~/components/Button';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
-import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
@@ -60,13 +60,8 @@ function Header() {
                 </Tippy>
 
                 <div className={cx('action')}>
-                    <Button primary>Log in</Button>
-                    {/* <Button primary href="https://fullstack.edu.vn/">
-                        Log in
-                    </Button> */}
-                    {/* <Button primary to="/login">
-                        Log in
-                    </Button> */}
+                    <Button text>Upload</Button>
+                    <Button primary>Upload</Button>
                 </div>
             </div>
         </header>
