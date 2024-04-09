@@ -3,9 +3,11 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import { SearchIcon } from '~/components/Icons';
 import HeadlessTippy from '@tippyjs/react/headless';
+import * as searchServices from '~/apiServices/searchServices';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
+import { useDebounce } from '~/hooks';
 import { useEffect, useState, useRef } from 'react';
 
 const cx = classNames.bind(styles);
@@ -14,14 +16,27 @@ function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [showResult, setShowResult] = useState(true);
+    const [loading, setLoading] = useState(false);
+
+    const debounced = useDebounce(searchValue, 500);
 
     const inputRef = useRef();
 
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResults([1, 2, 3]);
-        }, 3000);
-    }, []);
+        if (!debounced.trim()) {
+            setSearchResults([]);
+            return;
+        }
+
+        const fetchApi = async () => {
+            setLoading(true);
+
+            const result = await searchServices.search(debounced);
+            setSearchResults(result);
+            setLoading(false);
+        }
+        fetchApi();
+    }, [debounced]);
 
     const handleClear = () => {
         setSearchValue('');
@@ -41,11 +56,9 @@ function Search() {
                 <div className={cx('search-result')} tabIndex={-1} {...attr}>
                     <PopperWrapper>
                         <h4 className={cx('search-title')}>Accounts</h4>
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
+                        {searchResults.map((result) => (
+                            <AccountItem key={result.id} data={result} />
+                        ))}
                     </PopperWrapper>
                 </div>
             )}
@@ -62,13 +75,13 @@ function Search() {
                 />
 
                 {/* TODO: tìm hiểu thêm phần này quan trọng toán tử condition hiển thị */}
-                {!!searchValue && (
+                {!!searchValue && !loading && (
                     <button className={cx('clear')} onClick={handleClear}>
                         <FontAwesomeIcon icon={faCircleXmark} />
                     </button>
                 )}
 
-                {/* <FontAwesomeIcon className={cx('loading')} icon={faSpinner} /> */}
+                {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
                 <button className={cx('search-btn')}>
                     <SearchIcon />
                 </button>
