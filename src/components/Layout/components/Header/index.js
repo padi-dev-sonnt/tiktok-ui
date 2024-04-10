@@ -20,7 +20,7 @@ import styles from './Header.module.scss';
 import images from '~/asset/images';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
-import { InboxIcon, MessageIcon, UploadIcon} from '~/components/Icons';
+import { InboxIcon, MessageIcon, UploadIcon } from '~/components/Icons';
 import Image from '~/components/Image';
 import Search from '../Search';
 
@@ -127,7 +127,6 @@ function Header() {
                                     <span className={cx('badge')}>12</span>
                                 </button>
                             </Tippy>
-
                         </>
                     ) : (
                         <>
@@ -136,14 +135,11 @@ function Header() {
                         </>
                     )}
 
-                    <Menu 
-                        items={currentUser ? userMenu : MENU_ITEMS} 
-                        onChange={handleMenuChange}
-                    >
+                    <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
                             <Image
                                 className={cx('user-avatar')}
-                                src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/239e8250c904aa53d2f6557c8a817f21~c5_100x100.jpeg?lk3s=a5d48078&x-expires=1712480400&x-signature=R9OEOKvX73zgp%2FOlPjKJL%2B2DNXA%3D" 
+                                src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/239e8250c904aa53d2f6557c8a817f21~c5_100x100.jpeg?lk3s=a5d48078&x-expires=1712480400&x-signature=R9OEOKvX73zgp%2FOlPjKJL%2B2DNXA%3D"
                                 alt="Nguyen Van A"
                             />
                         ) : (
@@ -151,7 +147,6 @@ function Header() {
                                 <FontAwesomeIcon icon={faEllipsisVertical} />
                             </button>
                         )}
-
                     </Menu>
                 </div>
             </div>
