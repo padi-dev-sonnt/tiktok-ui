@@ -7,8 +7,15 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider } from 'wagmi';
 
 import { config } from './wagmi/wagmi';
+import { createWeb3Modal } from '@web3modal/wagmi/react'
 
 const queryClient = new QueryClient();
+const projectId = '3fbb6bba6f1de962d911bb5b5c9dba88';
+createWeb3Modal({
+    wagmiConfig: config,
+    projectId: projectId,
+    allWallets: 'ONLY_MOBILE'
+})
 
 function App() {
     return (

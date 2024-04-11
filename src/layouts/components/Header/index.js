@@ -24,6 +24,7 @@ import { InboxIcon, MessageIcon, UploadIcon } from '~/components/Icons';
 import Image from '~/components/Image';
 import Search from '../Search';
 import { useChainId, useConnect } from 'wagmi';
+import ButtonConnect from '~/components/ButtonConnect';
 
 const cx = classNames.bind(styles);
 
@@ -134,13 +135,15 @@ function Header() {
                     ) : (
                         <>
                             <Button text>Upload</Button>
-                            {connectors
+                            <ButtonConnect />
+                            {/* ButtonConnect */}
+                            {/* {connectors
                                 .filter((connector) => connector.id === 'walletConnect')
                                 .map((connector, index) => (
                                     <Button primary key={index} onClick={() => connect({ connector, chainId })}>
                                         Log in
                                     </Button>
-                                ))}
+                                ))} */}
                         </>
                     )}
 
