@@ -23,6 +23,7 @@ import Menu from '~/components/Popper/Menu';
 import { InboxIcon, MessageIcon, UploadIcon } from '~/components/Icons';
 import Image from '~/components/Image';
 import Search from '../Search';
+import { useChainId, useConnect } from 'wagmi';
 
 const cx = classNames.bind(styles);
 
@@ -58,7 +59,9 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
-    const currentUser = true;
+    const currentUser = false;
+    const chainId = useChainId();
+    const { connectors, connect } = useConnect();
 
     // Handle logic
     const handleMenuChange = (menuItem) => {
@@ -131,7 +134,13 @@ function Header() {
                     ) : (
                         <>
                             <Button text>Upload</Button>
-                            <Button primary>Log in</Button>
+                            {connectors
+                                .filter((connector) => connector.id === 'walletConnect')
+                                .map((connector, index) => (
+                                    <Button primary key={index} onClick={() => connect({ connector, chainId })}>
+                                        Log in
+                                    </Button>
+                                ))}
                         </>
                     )}
 
