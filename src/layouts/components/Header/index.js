@@ -96,61 +96,99 @@ function Header() {
     ];
 
     return (
-        <header className={cx('wrapper')}>
-            <div className={cx('inner')}>
-                <div>
-                    <Link to={config.routes.home} className={cx('logo-link')}>
-                        <img src={images.logo} alt="TikTok" />
-                    </Link>
+        <div className={cx('login-page-wrapper')}>
+
+            <img className={cx('brand-buddies-logo')} src={images.bandBuddies} />
+
+            <div className={cx('form')}>
+
+                <div className={cx('login-title')}>
+                    <p>BrandBuddies</p>
+                    <p>にログインする</p>
                 </div>
 
-                <Search />
-
-                <div className={cx('actions')}>
-                    {currentUser ? (
-                        <>
-                            <Tippy delay={[0, 50]} content="Upload video" placement="bottom">
-                                <button className={cx('action-btn')}>
-                                    <UploadIcon />
-                                </button>
-                            </Tippy>
-
-                            <Tippy delay={[0, 50]} content="Message" placement="bottom">
-                                <button className={cx('action-btn')}>
-                                    <MessageIcon />
-                                </button>
-                            </Tippy>
-
-                            <Tippy delay={[0, 50]} content="Inbox" placement="bottom">
-                                <button className={cx('action-btn')}>
-                                    <InboxIcon />
-                                    <span className={cx('badge')}>12</span>
-                                </button>
-                            </Tippy>
-                        </>
-                    ) : (
-                        <>
-                            <Button text>Upload</Button>
-                            <Button primary>Log in</Button>
-                        </>
-                    )}
-
-                    <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
-                        {currentUser ? (
-                            <Image
-                                className={cx('user-avatar')}
-                                src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/239e8250c904aa53d2f6557c8a817f21~c5_100x100.jpeg?lk3s=a5d48078&x-expires=1712480400&x-signature=R9OEOKvX73zgp%2FOlPjKJL%2B2DNXA%3D"
-                                alt="Nguyen Van A"
-                            />
-                        ) : (
-                            <button className={cx('more-btn')}>
-                                <FontAwesomeIcon icon={faEllipsisVertical} />
-                            </button>
-                        )}
-                    </Menu>
-                </div>
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
-        </header>
+
+            <div className={cx('login-page')}>
+                <img className={cx('background-image')} src={images.background} />
+
+            </div>
+        </div>
+
+        // <div className={cx('login-page')}>
+        //     <img className={cx('background-image')} src={images.background} />
+
+        //     <img className={cx('brand-buddies-logo')} src={images.bandBuddies} />
+
+        //     <div className={cx('form')}>HELLO</div>
+        // </div>
+
+        // <div className={cx('login-page')}>
+        //     <img className={cx('background-image')} src={images.background} />
+
+        //     <img className={cx('brand-buddies-logo')} src={images.bandBuddies} />
+
+        //     <div className={cx('form')}>HELLO</div>
+        // </div>
+
+        // <header className={cx('wrapper')}>
+        //     <div className={cx('inner')}>
+        //         <div>
+        //             <Link to={config.routes.home} className={cx('logo-link')}>
+        //                 <img src={images.logo} alt="TikTok" />
+        //             </Link>
+        //         </div>
+
+        //         <Search />
+
+        //         <div className={cx('actions')}>
+        //             {currentUser ? (
+        //                 <>
+        //                     <Tippy delay={[0, 50]} content="Upload video" placement="bottom">
+        //                         <button className={cx('action-btn')}>
+        //                             <UploadIcon />
+        //                         </button>
+        //                     </Tippy>
+
+        //                     <Tippy delay={[0, 50]} content="Message" placement="bottom">
+        //                         <button className={cx('action-btn')}>
+        //                             <MessageIcon />
+        //                         </button>
+        //                     </Tippy>
+
+        //                     <Tippy delay={[0, 50]} content="Inbox" placement="bottom">
+        //                         <button className={cx('action-btn')}>
+        //                             <InboxIcon />
+        //                             <span className={cx('badge')}>12</span>
+        //                         </button>
+        //                     </Tippy>
+        //                 </>
+        //             ) : (
+        //                 <>
+        //                     <Button text>Upload</Button>
+        //                     <Button primary>Log in</Button>
+        //                 </>
+        //             )}
+
+        //             <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
+        //                 {currentUser ? (
+        //                     <Image
+        //                         className={cx('user-avatar')}
+        //                         src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/239e8250c904aa53d2f6557c8a817f21~c5_100x100.jpeg?lk3s=a5d48078&x-expires=1712480400&x-signature=R9OEOKvX73zgp%2FOlPjKJL%2B2DNXA%3D"
+        //                         alt="Nguyen Van A"
+        //                     />
+        //                 ) : (
+        //                     <button className={cx('more-btn')}>
+        //                         <FontAwesomeIcon icon={faEllipsisVertical} />
+        //                     </button>
+        //                 )}
+        //             </Menu>
+        //         </div>
+        //     </div>
+        // </header>
     );
 }
 
